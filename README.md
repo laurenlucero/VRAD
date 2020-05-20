@@ -12,7 +12,7 @@ VRAD is a Turing Project based off of AirBnB/VRBO that houses data about differe
 4) To view the application, in the terminal run, npm start
 
 ## Collaborators 
-Lauren Lucero
+Lauren Lucero &
 Dave Pernitz
 
 
