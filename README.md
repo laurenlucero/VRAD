@@ -1,13 +1,19 @@
+# VRAD - Vacation Rentals Around Denver
+
+## Abstract
+VRAD is a Turing Project based off of AirBnB/VRBO that houses data about different areas of Denver and rentals available in each area. It is a modular React application utilizing functional and class components, state and props, lifecycle methods, propTypes and React Router. Nested fetch calls are used to retrieve area and listing information from a RESTful API. The application also implements unit and integration tests including asynchronous testing with Jest and React Testing Library. 
 
 
-* There should also be a button that when clicked, links the user to the /favorites route and displays only the favorited cards.
-    we will need to make a favorites display component that shows the listing cards of the favorites...reuse listingCard ??
-    Button is in header...need wrap that in a Link
+## Installation
 
-<!-- * Users should be able to unfavorite a card both on the relevant route (/areas/:area_id/:listing_id) as well as the /favorites route. 
-    Two buttons, one in favorites display and one in listing details
-    method in app that removes a favorite...pass in the favorite to removes id, filter through and create new array with every one but the one that matches the id, save that to a variable, set state to said variable -->
+1) Fork this repo
+2) Clone down
+3) In the terminal run, npm install
+4) To view the application, in the terminal run, npm start
+
+## Collaborators 
+Lauren Lucero
+Dave Pernitz
 
 
-* If there are no favorites, there should be a message indicating that there are no favorites.
-    just a little conditional rendering, probably in favorites display component. 
+![gif of working application](https://media3.giphy.com/media/drxwosf6HNAoQDT6xC/giphy.gif)

@@ -29,9 +29,9 @@ const Header = (props) => {
   return (
     <header>
       <section className='vrad'>
-      {/* <Link to="/areas"> */}
+      <Link className='accronym-link' to={!props.user.name ? '/' : "/areas"}>
         <h1>V.R.A.D.</h1>
-      {/* </Link> */}
+      </Link>
         <p className="acronym">Vacation Rentals Around Denver</p>
       </section>
         {props.user && <h2 className="welcome-msg">Welcome to Denver!</h2>}

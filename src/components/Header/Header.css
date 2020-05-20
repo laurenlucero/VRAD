@@ -13,14 +13,19 @@ h1 {
   letter-spacing: 0.2em;
   margin-left: 2%;
   text-shadow: 2px 2px 1px #2b1b19;
+
 }
 
 .acronym {
-  display: inline-block;
+  /* display: inline-block; */
   font-family: "Anton", sans-serif;
   grid-column: 1 / 2;
   margin-left: 2%;
   text-shadow: 1px 1px 0px #f2ac29;
+}
+
+.accronym-link {
+  text-decoration: none
 }
 
 .message-section {

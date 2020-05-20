@@ -51,11 +51,12 @@ describe("ListingDetails", () => {
     expect(getByText("hot tub")).toBeInTheDocument();
     expect(getByText("espresso machine")).toBeInTheDocument();
   });
+
   // why failing, need async for picture to get loaded????
   it.skip("should pictures of the lisiting", () => {
     const { getByAltText } = render(
       <MemoryRouter>
-        <ListingDetails details={listing1} />
+        <ListingDetails details={listing1} favoriteIds={[]}/>
       </MemoryRouter>
     );
 

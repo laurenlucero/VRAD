@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom'
 
 describe('Header', () => {
     it('displays a header', () => {
-        const { getByText } = render(<Header />)
+        const { getByText } = render(<MemoryRouter><Header user={ { name: 'Lauren' } }/></MemoryRouter>)
 
         expect(getByText('V.R.A.D.')).toBeInTheDocument()
     })

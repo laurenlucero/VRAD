@@ -6,8 +6,9 @@ import ListingsContainer from "../ListingsContainer/ListingsContainer";
 import Header from "../Header/Header";
 import ListingDetails from "../ListingDetails/ListingDetails";
 import Favorites from "../Favorites/Favorites";
+import Error from '../Error/Error'
 import { fetchAreasData, fetchListingsData } from "../../apiCalls/apiCalls";
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 class App extends React.Component {
   constructor() {
@@ -93,33 +94,46 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header
+       <Header
           user={this.state.user}
           resetUser={this.resetUser}
           numberOfFavorites={this.state.favorites.length}
         />
+
+      <Switch>
         <Route
-          path="/"
-          exact
-          render={() => {
-            return <SignIn setUser={this.setUser} />;
-          }}
+            path={`/listings/${this.state.currentListing}`}
+            render={() => {
+              const currentListing = this.state.listings[
+                this.state.currentArea
+              ].find(
+                (listing) => listing.listing_id === this.state.currentListing
+              );
+              return (
+                <ListingDetails
+                  details={currentListing}
+                  saveToFavorites={this.saveToFavorites}
+                  removeFromFavorites={this.removeFromFavorites}
+                  favoriteIds={this.state.favorites}
+                />
+              );
+            }}
+          />
+           <Route
+            exact
+            path="/areas"
+            render={() => {
+              return (
+                <AreasContainer
+                  areas={this.state.areas}
+                  setCurrentArea={this.setCurrentArea}
+                />
+              );
+            }}
         />
-        <Route
-          path="/areas"
+          <Route
           exact
-          render={() => {
-            return (
-              <AreasContainer
-                areas={this.state.areas}
-                setCurrentArea={this.setCurrentArea}
-              />
-            );
-          }}
-        />
-        <Route
           path={`/areas/${this.state.currentArea}`}
-          exact
           render={() => {
             return (
               <ListingsContainer
@@ -134,27 +148,7 @@ class App extends React.Component {
           }}
         />
         <Route
-          path={`/listings/${this.state.currentListing}`}
-          exact
-          render={() => {
-            const currentListing = this.state.listings[
-              this.state.currentArea
-            ].find(
-              (listing) => listing.listing_id === this.state.currentListing
-            );
-            return (
-              <ListingDetails
-                details={currentListing}
-                saveToFavorites={this.saveToFavorites}
-                removeFromFavorites={this.removeFromFavorites}
-                favoriteIds={this.state.favorites}
-              />
-            );
-          }}
-        />
-        <Route
           path={"/favorites"}
-          exact
           render={() => {
             return (
               <Favorites
@@ -164,6 +158,26 @@ class App extends React.Component {
             );
           }}
         />
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return <SignIn setUser={this.setUser} />;
+          }}
+        />
+        <Route
+          path="/error"
+          render={() => <Error />}
+        />
+        <Redirect to="/error"/>
+
+      </Switch>
+       
+        
+        
+        
+
+
       </div>
     );
   }
